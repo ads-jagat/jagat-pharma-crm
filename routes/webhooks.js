@@ -12,9 +12,9 @@ function normalise(source, body) {
   }
   if (source === 'kwikengage') {
     return {
-      name: (body.contact && body.contact.name) || body.name || '',
-      phone: (body.contact && body.contact.phone) || body.phone || '',
-      query: body.text || body.message || ''
+      name: body.contact?.name || body.name || body.customer_name || body.from_name || body.sender_name || '',
+      phone: body.contact?.phone || body.phone || body.mobile || body.from || body.wa_id || body.sender || body.msisdn || '',
+      query: body.text || body.message || body.body || body.content || body.msg || body.last_message || ''
     };
   }
   if (source === 'team') {
@@ -32,10 +32,13 @@ function normalise(source, body) {
 }
 
 async function saveLead(source, body, res) {
+  console.log(`RAW payload from ${source}:`, JSON.stringify(body));
   try {
     const { name, phone, query } = normalise(source, body);
-    if (!phone) return res.status(400).json({ error: 'Phone number is required' });
-
+    if (!phone) {
+      console.log(`Missing phone in ${source} payload:`, JSON.stringify(body));
+      return res.status(400).json({ error: 'Phone number is required' });
+    }
     const sourceLabel = source.charAt(0).toUpperCase() + source.slice(1);
     const result = await pool.query(
       `INSERT INTO leads (name, phone, query, source)
