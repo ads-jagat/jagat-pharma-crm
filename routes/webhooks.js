@@ -24,11 +24,7 @@ function normalise(source, body) {
       query: body.body || body.message || ''
     };
   }
-  return {
-    name: body.name || '',
-    phone: body.phone || '',
-    query: body.message || ''
-  };
+  return { name: body.name || '', phone: body.phone || '', query: body.message || '' };
 }
 
 async function saveLead(source, body, res) {
@@ -40,13 +36,22 @@ async function saveLead(source, body, res) {
       return res.status(400).json({ error: 'Phone number is required' });
     }
     const sourceLabel = source.charAt(0).toUpperCase() + source.slice(1);
-    const result = await pool.query(
-      `INSERT INTO leads (name, phone, query, source)
-       VALUES ($1, $2, $3, $4) RETURNING *`,
-      [name || 'Unknown', phone.replace(/\s+/g, ''), query, sourceLabel]
+    const cleanPhone = phone.replace(/\s+/g, '');
+
+    await pool.query(
+      `INSERT INTO messages (phone, name, content, source) VALUES ($1, $2, $3, $4)`,
+      [cleanPhone, name || 'Unknown', query, sourceLabel]
     );
-    console.log(`New lead from ${sourceLabel}:`, phone);
-    res.json({ success: true, lead: result.rows[0] });
+
+    await pool.query(
+      `INSERT INTO leads (name, phone, query, source)
+       VALUES ($1, $2, $3, $4)
+       ON CONFLICT (phone) DO UPDATE
+       SET name = EXCLUDED.name, query = EXCLUDED.query, received_at = NOW()`,
+      [name || 'Unknown', cleanPhone, query, sourceLabel]
+    );
+
+    res.json({ success: true });
   } catch (err) {
     console.error('Webhook error:', err.message);
     res.status(500).json({ error: 'Database error' });
