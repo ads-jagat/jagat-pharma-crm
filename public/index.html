@@ -6,80 +6,96 @@
 <title>Jagat Pharma CRM</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;background:#f5f6fa;color:#1a1a2e}
-.header{background:#fff;border-bottom:1px solid #e8eaed;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;background:#f5f6fa;color:#1a1a2e;height:100vh;display:flex;flex-direction:column}
+.header{background:#fff;border-bottom:1px solid #e8eaed;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .brand{display:flex;align-items:center;gap:10px}
-.brand-logo{width:32px;height:32px;border-radius:8px;background:#0F6E56;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
-.brand-name{font-size:15px;font-weight:600;color:#1a1a2e}
+.brand-logo{width:32px;height:32px;border-radius:8px;background:#0F6E56;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
+.brand-name{font-size:15px;font-weight:600}
 .brand-sub{font-size:11px;color:#888}
-.header-actions{display:flex;gap:8px}
-.btn{padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:500;transition:all .15s}
-.btn-outline{background:#fff;border:1px solid #dde1e7;color:#444}
-.btn-outline:hover{background:#f5f6fa}
-.btn-primary{background:#0F6E56;border:1px solid #0F6E56;color:#fff}
+.header-right{display:flex;align-items:center;gap:10px}
+.conn-dot{width:8px;height:8px;border-radius:50%;background:#0F6E56;display:inline-block}
+.conn-dot.red{background:#dc2626}
+.conn-label{font-size:12px;color:#888}
+.btn{padding:7px 14px;border-radius:8px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:500;border:1px solid #dde1e7;background:#fff;color:#444;transition:all .15s}
+.btn:hover{background:#f5f6fa}
+.btn-primary{background:#0F6E56;border-color:#0F6E56;color:#fff}
 .btn-primary:hover{background:#085041}
-.btn-danger{background:#fff;border:1px solid #fca5a5;color:#dc2626}
-.btn-danger:hover{background:#fef2f2}
-.main{max-width:1200px;margin:0 auto;padding:20px 24px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
-.stat{background:#fff;border-radius:10px;border:1px solid #e8eaed;padding:14px 16px}
-.stat-label{font-size:11px;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-.stat-val{font-size:24px;font-weight:600}
-.stat-val.green{color:#0F6E56}.stat-val.amber{color:#92400e}.stat-val.gray{color:#555}.stat-val.blue{color:#1e40af}
-.toolbar{background:#fff;border:1px solid #e8eaed;border-radius:10px;padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
-.search-wrap{flex:1;min-width:200px;position:relative}
-.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#aaa}
-.search-wrap input{width:100%;padding:7px 10px 7px 32px;border:1px solid #dde1e7;border-radius:7px;font-size:13px;background:#f9fafb;color:#1a1a2e}
-.search-wrap input:focus{outline:none;border-color:#0F6E56;background:#fff}
-select{padding:7px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px;background:#f9fafb;color:#1a1a2e;cursor:pointer}
-select:focus{outline:none;border-color:#0F6E56}
-.table-wrap{background:#fff;border:1px solid #e8eaed;border-radius:10px;overflow:hidden}
-table{width:100%;border-collapse:collapse}
-th{font-size:11px;font-weight:600;color:#888;text-align:left;padding:10px 14px;border-bottom:1px solid #e8eaed;background:#fafbfc;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
-td{padding:11px 14px;border-bottom:1px solid #f0f2f5;font-size:13px;vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:#f9fafb;cursor:pointer}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600}
+.btn-kw{background:#1A73E8;border-color:#1A73E8;color:#fff;font-size:12px;padding:6px 12px}
+.btn-kw:hover{background:#1557b0}
+
+.layout{display:flex;flex:1;overflow:hidden}
+
+/* LEFT PANEL */
+.left-panel{width:360px;border-right:1px solid #e8eaed;background:#fff;display:flex;flex-direction:column;flex-shrink:0}
+.left-toolbar{padding:12px;border-bottom:1px solid #e8eaed;display:flex;flex-direction:column;gap:8px}
+.search-wrap{position:relative}
+.search-wrap input{width:100%;padding:7px 10px 7px 32px;border:1px solid #dde1e7;border-radius:8px;font-size:13px;background:#f9fafb}
+.search-wrap input:focus{outline:none;border-color:#0F6E56}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#aaa;font-size:13px}
+.filter-row{display:flex;gap:6px}
+.filter-row select{flex:1;padding:6px 8px;border:1px solid #dde1e7;border-radius:7px;font-size:12px;background:#f9fafb}
+
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 12px;border-bottom:1px solid #e8eaed}
+.stat-mini{background:#f9fafb;border-radius:7px;padding:8px 10px;text-align:center}
+.stat-mini-val{font-size:18px;font-weight:600}
+.stat-mini-val.green{color:#0F6E56}
+.stat-mini-val.amber{color:#92400e}
+.stat-mini-val.gray{color:#555}
+.stat-mini-label{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:.4px}
+
+.contacts-list{flex:1;overflow-y:auto}
+.contact-item{padding:12px 14px;border-bottom:1px solid #f0f2f5;cursor:pointer;transition:background .1s;display:flex;align-items:center;gap:10px}
+.contact-item:hover{background:#f9fafb}
+.contact-item.active{background:#E8F5F0;border-left:3px solid #0F6E56}
+.avatar{width:38px;height:38px;border-radius:50%;background:#0F6E56;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0}
+.avatar.bs{background:#1E40AF}
+.avatar.kw{background:#9D174D}
+.avatar.team{background:#065F46}
+.contact-info{flex:1;min-width:0}
+.contact-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.contact-preview{font-size:12px;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.contact-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.contact-time{font-size:11px;color:#aaa}
+.msg-count{background:#0F6E56;color:#fff;border-radius:10px;padding:2px 7px;font-size:11px;font-weight:600}
+.source-dot{width:8px;height:8px;border-radius:50%;margin-top:2px}
+.source-dot.Bitespeed{background:#1E40AF}
+.source-dot.Kwikengage{background:#9D174D}
+.source-dot.Team{background:#065F46}
+
+.empty-list{text-align:center;padding:40px 20px;color:#aaa;font-size:13px}
+
+/* RIGHT PANEL */
+.right-panel{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.chat-header{padding:12px 20px;border-bottom:1px solid #e8eaed;background:#fff;display:flex;align-items:center;justify-content:space-between}
+.chat-header-info{display:flex;align-items:center;gap:10px}
+.chat-name{font-size:15px;font-weight:600}
+.chat-phone{font-size:12px;color:#888}
+.chat-actions{display:flex;gap:8px;align-items:center}
+
+.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600}
 .badge-new{background:#dcfce7;color:#166534}
 .badge-follow{background:#fef3c7;color:#92400e}
 .badge-closed{background:#f1f5f9;color:#475569}
 .badge-bs{background:#dbeafe;color:#1e40af}
 .badge-kw{background:#fce7f3;color:#9d174d}
 .badge-team{background:#d1fae5;color:#065f46}
-.wa-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:500;background:#0F6E56;color:#fff;text-decoration:none;border:none;cursor:pointer;transition:background .15s}
-.wa-btn:hover{background:#085041}
-.empty{text-align:center;padding:48px 20px;color:#aaa}
-.empty svg{margin:0 auto 12px;display:block;opacity:.3}
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;align-items:center;justify-content:center}
-.modal-bg.open{display:flex}
-.modal{background:#fff;border-radius:12px;width:500px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.15)}
-.modal-header{padding:16px 20px;border-bottom:1px solid #e8eaed;display:flex;align-items:center;justify-content:space-between}
-.modal-header h3{font-size:15px;font-weight:600}
-.modal-body{padding:20px}
-.field-group{margin-bottom:14px}
-.field-label{font-size:12px;font-weight:500;color:#555;margin-bottom:5px}
-.field-input{width:100%;padding:8px 11px;border:1px solid #dde1e7;border-radius:7px;font-size:13px;color:#1a1a2e;background:#fff}
-.field-input:focus{outline:none;border-color:#0F6E56}
-textarea.field-input{resize:vertical;min-height:80px}
-.modal-footer{padding:12px 20px;border-top:1px solid #e8eaed;display:flex;gap:8px;justify-content:flex-end}
-.detail-grid{display:grid;grid-template-columns:90px 1fr;gap:8px 12px;margin-bottom:16px}
-.detail-key{font-size:12px;color:#888;padding-top:2px}
-.detail-val{font-size:13px}
-.notes-list{margin-bottom:12px}
-.note-item{background:#f9fafb;border-radius:7px;padding:9px 11px;margin-bottom:6px}
-.note-meta{font-size:11px;color:#aaa;margin-bottom:3px}
-.note-text{font-size:13px;color:#444}
-.add-note-row{display:flex;gap:6px}
-.add-note-row input{flex:1;padding:7px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px}
-.add-note-row input:focus{outline:none;border-color:#0F6E56}
-.section-title{font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
-.divider{border:none;border-top:1px solid #e8eaed;margin:14px 0}
-.toast{position:fixed;bottom:24px;right:24px;background:#1a1a2e;color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
-.toast.show{opacity:1}
-.loading{text-align:center;padding:32px;color:#aaa;font-size:13px}
-.conn-status{display:flex;align-items:center;gap:6px;font-size:12px;color:#888}
-.conn-dot{width:7px;height:7px;border-radius:50%;background:#0F6E56}
-.conn-dot.red{background:#dc2626}
+
+.messages-area{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px}
+.msg-bubble{max-width:65%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5}
+.msg-bubble.incoming{background:#fff;border:1px solid #e8eaed;align-self:flex-start;border-bottom-left-radius:3px}
+.msg-bubble .msg-time{font-size:11px;color:#aaa;margin-top:4px}
+.msg-bubble .msg-source{font-size:10px;color:#aaa}
+
+.no-chat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#aaa}
+.no-chat-icon{font-size:48px;margin-bottom:12px;opacity:.3}
+
+.status-bar{padding:10px 20px;border-top:1px solid #e8eaed;background:#fff;display:flex;align-items:center;gap:8px}
+.status-bar select{padding:6px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px;background:#fff}
+
+.loading-spinner{text-align:center;padding:20px;color:#aaa;font-size:13px}
+
+/* Export button */
+.btn-sm{padding:5px 10px;font-size:12px;border-radius:6px}
 </style>
 </head>
 <body>
@@ -92,264 +108,292 @@ textarea.field-input{resize:vertical;min-height:80px}
       <div class="brand-sub">WhatsApp Lead Management</div>
     </div>
   </div>
-  <div class="header-actions">
-    <div class="conn-status"><div class="conn-dot" id="conn-dot"></div><span id="conn-text">Connecting...</span></div>
-    <button class="btn btn-outline" onclick="exportCSV()">⬇ Export CSV</button>
-    <button class="btn btn-primary" onclick="openAddModal()">+ Add Lead</button>
+  <div class="header-right">
+    <span><span class="conn-dot" id="conn-dot"></span> <span class="conn-label" id="conn-label">Connecting...</span></span>
+    <button class="btn btn-sm" onclick="exportCSV()">⬇ Export</button>
+    <button class="btn btn-primary btn-sm" onclick="openAddModal()">+ Add Lead</button>
   </div>
 </div>
 
-<div class="main">
-  <div class="stats" id="stats">
-    <div class="stat"><div class="stat-label">Total Leads</div><div class="stat-val blue" id="s-total">—</div></div>
-    <div class="stat"><div class="stat-label">New</div><div class="stat-val green" id="s-new">—</div></div>
-    <div class="stat"><div class="stat-label">Follow-up</div><div class="stat-val amber" id="s-follow">—</div></div>
-    <div class="stat"><div class="stat-label">Closed</div><div class="stat-val gray" id="s-closed">—</div></div>
-  </div>
-
-  <div class="toolbar">
-    <div class="search-wrap">
-      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="search" placeholder="Search by name or number…" oninput="loadLeads()">
+<div class="layout">
+  <!-- LEFT: Contact List -->
+  <div class="left-panel">
+    <div class="left-toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search" placeholder="Search name or number…" oninput="renderContacts()">
+      </div>
+      <div class="filter-row">
+        <select id="filterStatus" onchange="renderContacts()">
+          <option value="">All Statuses</option>
+          <option>New</option><option>Follow-up</option><option>Closed</option>
+        </select>
+        <select id="filterSource" onchange="renderContacts()">
+          <option value="">All Sources</option>
+          <option>Bitespeed</option><option>Kwikengage</option><option>Team</option>
+        </select>
+        <button class="btn btn-sm" onclick="loadLeads()" title="Refresh">↻</button>
+      </div>
     </div>
-    <select id="filterStatus" onchange="loadLeads()">
-      <option value="">All Statuses</option>
-      <option>New</option><option>Follow-up</option><option>Closed</option>
-    </select>
-    <select id="filterSource" onchange="loadLeads()">
-      <option value="">All Sources</option>
-      <option>Bitespeed</option><option>Kwikengage</option><option>Team</option>
-    </select>
-    <button class="btn btn-outline" onclick="loadLeads()">↻ Refresh</button>
+
+    <div class="stats-row">
+      <div class="stat-mini"><div class="stat-mini-val green" id="s-total">0</div><div class="stat-mini-label">Total</div></div>
+      <div class="stat-mini"><div class="stat-mini-val green" id="s-new">0</div><div class="stat-mini-label">New</div></div>
+      <div class="stat-mini"><div class="stat-mini-val amber" id="s-follow">0</div><div class="stat-mini-label">Follow-up</div></div>
+    </div>
+
+    <div class="contacts-list" id="contacts-list">
+      <div class="loading-spinner">Loading...</div>
+    </div>
   </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th><th>Name</th><th>Phone</th><th>Query</th><th>Source</th><th>Date & Time</th><th>Status</th><th>Action</th>
-        </tr>
-      </thead>
-      <tbody id="leads-body">
-        <tr><td colspan="8" class="loading">Loading leads...</td></tr>
-      </tbody>
-    </table>
+  <!-- RIGHT: Chat Panel -->
+  <div class="right-panel" id="right-panel">
+    <div class="no-chat" id="no-chat">
+      <div class="no-chat-icon">💬</div>
+      <div style="font-size:15px;font-weight:500;color:#666;margin-bottom:6px">Select a contact</div>
+      <div style="font-size:13px">Click any contact on the left to view their messages</div>
+    </div>
+
+    <div id="chat-view" style="display:none;flex:1;flex-direction:column;overflow:hidden">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="avatar" id="chat-avatar">?</div>
+          <div>
+            <div class="chat-name" id="chat-name">-</div>
+            <div class="chat-phone" id="chat-phone">-</div>
+          </div>
+          <span id="chat-source-badge"></span>
+        </div>
+        <div class="chat-actions">
+          <select id="chat-status" onchange="updateStatus()" style="padding:5px 8px;border:1px solid #dde1e7;border-radius:6px;font-size:12px">
+            <option>New</option><option>Follow-up</option><option>Closed</option>
+          </select>
+          <button class="btn btn-kw" onclick="openKwikEngage()">💬 Reply on KwikEngage</button>
+        </div>
+      </div>
+
+      <div class="messages-area" id="messages-area">
+      </div>
+
+      <div class="status-bar">
+        <span style="font-size:12px;color:#888" id="msg-count-label">0 messages</span>
+        <span style="flex:1"></span>
+        <button class="btn btn-kw" onclick="openKwikEngage()">💬 Open KwikEngage to Reply</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Add Lead Modal -->
-<div class="modal-bg" id="modal-add">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>Add Lead Manually</h3>
-      <button class="btn btn-outline" style="padding:4px 8px" onclick="closeModal('modal-add')">✕</button>
+<div id="modal-add" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:12px;width:440px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,.15)">
+    <div style="padding:16px 20px;border-bottom:1px solid #e8eaed;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:600;font-size:15px">Add Lead Manually</span>
+      <button class="btn btn-sm" onclick="closeAddModal()">✕</button>
     </div>
-    <div class="modal-body">
-      <div class="field-group"><div class="field-label">Name</div><input class="field-input" id="add-name" placeholder="Customer name"></div>
-      <div class="field-group"><div class="field-label">Phone Number *</div><input class="field-input" id="add-phone" placeholder="+91 98765 43210"></div>
-      <div class="field-group"><div class="field-label">Query / Message</div><textarea class="field-input" id="add-query" placeholder="What did they ask?"></textarea></div>
-      <div class="field-group"><div class="field-label">WhatsApp Source</div>
-        <select class="field-input" id="add-source">
-          <option>Bitespeed</option><option>Kwikengage</option><option>Team</option>
-        </select>
-      </div>
-      <div class="field-group"><div class="field-label">Status</div>
-        <select class="field-input" id="add-status">
-          <option>New</option><option>Follow-up</option><option>Closed</option>
-        </select>
+    <div style="padding:20px;display:flex;flex-direction:column;gap:12px">
+      <div><div style="font-size:12px;font-weight:500;color:#555;margin-bottom:4px">Name</div><input id="add-name" style="width:100%;padding:8px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px" placeholder="Customer name"></div>
+      <div><div style="font-size:12px;font-weight:500;color:#555;margin-bottom:4px">Phone *</div><input id="add-phone" style="width:100%;padding:8px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px" placeholder="+91 98765 43210"></div>
+      <div><div style="font-size:12px;font-weight:500;color:#555;margin-bottom:4px">Query</div><textarea id="add-query" style="width:100%;padding:8px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px;resize:vertical;min-height:70px" placeholder="What did they ask?"></textarea></div>
+      <div style="display:flex;gap:8px">
+        <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#555;margin-bottom:4px">Source</div>
+          <select id="add-source" style="width:100%;padding:8px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px"><option>Bitespeed</option><option>Kwikengage</option><option>Team</option></select></div>
+        <div style="flex:1"><div style="font-size:12px;font-weight:500;color:#555;margin-bottom:4px">Status</div>
+          <select id="add-status" style="width:100%;padding:8px 10px;border:1px solid #dde1e7;border-radius:7px;font-size:13px"><option>New</option><option>Follow-up</option><option>Closed</option></select></div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-add')">Cancel</button>
+    <div style="padding:12px 20px;border-top:1px solid #e8eaed;display:flex;justify-content:flex-end;gap:8px">
+      <button class="btn" onclick="closeAddModal()">Cancel</button>
       <button class="btn btn-primary" onclick="saveLead()">Save Lead</button>
     </div>
   </div>
 </div>
 
-<!-- Detail Modal -->
-<div class="modal-bg" id="modal-detail">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="detail-title">Lead Details</h3>
-      <button class="btn btn-outline" style="padding:4px 8px" onclick="closeModal('modal-detail')">✕</button>
-    </div>
-    <div class="modal-body" id="detail-body"></div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
+<div id="toast" style="position:fixed;bottom:24px;right:24px;background:#1a1a2e;color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none"></div>
 
 <script>
 const API = 'https://jagat-pharma-crm-production.up.railway.app/api';
 let allLeads = [];
+let currentLead = null;
 
-function sourceBadge(s){
-  const map={Bitespeed:'badge-bs',Kwikengage:'badge-kw',Team:'badge-team'};
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity = 1;
+  setTimeout(() => t.style.opacity = 0, 2500);
+}
+
+function fmtTime(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-IN', {day:'2-digit',month:'short'}) + ' ' + 
+         d.toLocaleTimeString('en-IN', {hour:'2-digit',minute:'2-digit',hour12:true});
+}
+
+function avatarLetter(name) {
+  return (name || '?').charAt(0).toUpperCase();
+}
+
+function avatarClass(source) {
+  if (source === 'Bitespeed') return 'bs';
+  if (source === 'Kwikengage') return 'kw';
+  return 'team';
+}
+
+function sourceBadge(s) {
+  const map = {Bitespeed:'badge-bs', Kwikengage:'badge-kw', Team:'badge-team'};
   return `<span class="badge ${map[s]||'badge-team'}">${s}</span>`;
 }
-function statusBadge(s){
-  const map={'New':'badge-new','Follow-up':'badge-follow','Closed':'badge-closed'};
-  return `<span class="badge ${map[s]||'badge-new'}">${s}</span>`;
-}
-function fmtTime(iso){
-  const d=new Date(iso);
-  return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'2-digit'})+' '+d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true});
-}
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+
+function setConn(ok) {
+  document.getElementById('conn-dot').className = 'conn-dot' + (ok ? '' : ' red');
+  document.getElementById('conn-label').textContent = ok ? 'Live' : 'Disconnected';
 }
 
-async function loadLeads(){
-  const search=document.getElementById('search').value;
-  const status=document.getElementById('filterStatus').value;
-  const source=document.getElementById('filterSource').value;
-  const params=new URLSearchParams();
-  if(search) params.set('search',search);
-  if(status) params.set('status',status);
-  if(source) params.set('source',source);
-
-  try{
-    const r=await fetch(`${API}/leads?${params}`);
-    allLeads=await r.json();
-    renderLeads();
+async function loadLeads() {
+  try {
+    const r = await fetch(`${API}/leads`, {cache:'no-store'});
+    allLeads = await r.json();
+    renderContacts();
     renderStats();
     setConn(true);
-  }catch(e){
+  } catch(e) {
     setConn(false);
-    document.getElementById('leads-body').innerHTML='<tr><td colspan="8" class="loading">⚠ Cannot connect to server. Make sure npm run dev is running.</td></tr>';
+    document.getElementById('contacts-list').innerHTML = '<div class="empty-list">⚠ Cannot connect to server</div>';
   }
 }
 
-function renderLeads(){
-  const tbody=document.getElementById('leads-body');
-  if(!allLeads.length){
-    tbody.innerHTML='<tr><td colspan="8" class="empty">No leads found</td></tr>';
-    return;
-  }
-  tbody.innerHTML=allLeads.map((l,i)=>`
-    <tr onclick="openDetail(${l.id})">
-      <td style="color:#aaa;font-size:12px">${l.id}</td>
-      <td style="font-weight:500">${l.name||'Unknown'}</td>
-      <td style="font-family:monospace;font-size:12px">${l.phone}</td>
-      <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#555" title="${l.query}">${l.query||'—'}</td>
-      <td>${sourceBadge(l.source)}</td>
-      <td style="font-size:12px;color:#888;white-space:nowrap">${fmtTime(l.received_at)}</td>
-      <td>${statusBadge(l.status)}</td>
-      <td><a class="wa-btn" href="https://wa.me/${l.phone.replace(/\D/g,'')}" onclick="event.stopPropagation()" target="_blank">💬 Reply</a></td>
-    </tr>
+function getFiltered() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const fs = document.getElementById('filterStatus').value;
+  const fso = document.getElementById('filterSource').value;
+  return allLeads.filter(l => {
+    const mq = !q || (l.name||'').toLowerCase().includes(q) || (l.phone||'').includes(q);
+    const ms = !fs || l.status === fs;
+    const mso = !fso || l.source === fso;
+    return mq && ms && mso;
+  });
+}
+
+function renderStats() {
+  document.getElementById('s-total').textContent = allLeads.length;
+  document.getElementById('s-new').textContent = allLeads.filter(l=>l.status==='New').length;
+  document.getElementById('s-follow').textContent = allLeads.filter(l=>l.status==='Follow-up').length;
+}
+
+function renderContacts() {
+  const fl = getFiltered().sort((a,b) => new Date(b.received_at) - new Date(a.received_at));
+  const list = document.getElementById('contacts-list');
+  if (!fl.length) { list.innerHTML = '<div class="empty-list">No contacts found</div>'; return; }
+  list.innerHTML = fl.map(l => `
+    <div class="contact-item ${currentLead && currentLead.phone === l.phone ? 'active' : ''}" onclick="openChat('${l.phone}')">
+      <div class="avatar ${avatarClass(l.source)}">${avatarLetter(l.name)}</div>
+      <div class="contact-info">
+        <div class="contact-name">${l.name || 'Unknown'}</div>
+        <div class="contact-preview">${l.query || '—'}</div>
+      </div>
+      <div class="contact-meta">
+        <div class="contact-time">${fmtTime(l.received_at)}</div>
+        <div class="source-dot ${l.source}"></div>
+      </div>
+    </div>
   `).join('');
 }
 
-function renderStats(){
-  document.getElementById('s-total').textContent=allLeads.length;
-  document.getElementById('s-new').textContent=allLeads.filter(l=>l.status==='New').length;
-  document.getElementById('s-follow').textContent=allLeads.filter(l=>l.status==='Follow-up').length;
-  document.getElementById('s-closed').textContent=allLeads.filter(l=>l.status==='Closed').length;
+async function openChat(phone) {
+  currentLead = allLeads.find(l => l.phone === phone);
+  if (!currentLead) return;
+
+  renderContacts();
+
+  document.getElementById('no-chat').style.display = 'none';
+  const cv = document.getElementById('chat-view');
+  cv.style.display = 'flex';
+
+  document.getElementById('chat-avatar').textContent = avatarLetter(currentLead.name);
+  document.getElementById('chat-avatar').className = 'avatar ' + avatarClass(currentLead.source);
+  document.getElementById('chat-name').textContent = currentLead.name || 'Unknown';
+  document.getElementById('chat-phone').textContent = currentLead.phone;
+  document.getElementById('chat-source-badge').innerHTML = sourceBadge(currentLead.source);
+  document.getElementById('chat-status').value = currentLead.status || 'New';
+
+  await loadMessages(phone);
 }
 
-function setConn(ok){
-  document.getElementById('conn-dot').className='conn-dot'+(ok?'':' red');
-  document.getElementById('conn-text').textContent=ok?'Live':'Disconnected';
+async function loadMessages(phone) {
+  const area = document.getElementById('messages-area');
+  area.innerHTML = '<div class="loading-spinner">Loading messages...</div>';
+  try {
+    const r = await fetch(`${API}/leads/${encodeURIComponent(phone)}/messages`, {cache:'no-store'});
+    const msgs = await r.json();
+    document.getElementById('msg-count-label').textContent = `${msgs.length} message${msgs.length !== 1 ? 's' : ''}`;
+    if (!msgs.length) {
+      area.innerHTML = '<div class="loading-spinner">No messages yet</div>';
+      return;
+    }
+    area.innerHTML = msgs.map(m => `
+      <div class="msg-bubble incoming">
+        <div>${m.content || '—'}</div>
+        <div class="msg-time">${fmtTime(m.received_at)}</div>
+      </div>
+    `).join('');
+    area.scrollTop = area.scrollHeight;
+  } catch(e) {
+    area.innerHTML = '<div class="loading-spinner">Failed to load messages</div>';
+  }
 }
 
-async function openDetail(id){
-  try{
-    const r=await fetch(`${API}/leads/${id}`);
-    const l=await r.json();
-    document.getElementById('detail-title').textContent=l.name||'Lead Details';
-    document.getElementById('detail-body').innerHTML=`
-      <div class="detail-grid">
-        <div class="detail-key">Name</div><div class="detail-val">${l.name||'—'}</div>
-        <div class="detail-key">Phone</div><div class="detail-val"><a href="https://wa.me/${l.phone.replace(/\D/g,'')}" target="_blank" style="color:#0F6E56">${l.phone}</a></div>
-        <div class="detail-key">Query</div><div class="detail-val" style="white-space:normal">${l.query||'—'}</div>
-        <div class="detail-key">Source</div><div class="detail-val">${sourceBadge(l.source)}</div>
-        <div class="detail-key">Received</div><div class="detail-val">${fmtTime(l.received_at)}</div>
-        <div class="detail-key">Status</div><div class="detail-val">
-          <select onchange="updateStatus(${l.id},this.value)" style="padding:5px 8px;border:1px solid #dde1e7;border-radius:6px;font-size:12px;background:#fff">
-            <option ${l.status==='New'?'selected':''}>New</option>
-            <option ${l.status==='Follow-up'?'selected':''}>Follow-up</option>
-            <option ${l.status==='Closed'?'selected':''}>Closed</option>
-          </select>
-        </div>
-      </div>
-      <hr class="divider">
-      <div class="section-title">Follow-up Notes</div>
-      <div class="notes-list" id="notes-${l.id}">
-        ${l.notes.length?l.notes.map(n=>`
-          <div class="note-item">
-            <div class="note-meta">${fmtTime(n.created_at)}</div>
-            <div class="note-text">${n.text}</div>
-          </div>`).join(''):'<div style="font-size:12px;color:#aaa;margin-bottom:8px">No notes yet</div>'}
-      </div>
-      <div class="add-note-row">
-        <input id="note-inp-${l.id}" placeholder="Add follow-up note…" onkeydown="if(event.key==='Enter')addNote(${l.id})">
-        <button class="btn btn-primary" style="padding:6px 12px" onclick="addNote(${l.id})">Add</button>
-      </div>
-      <hr class="divider">
-      <a class="wa-btn" href="https://wa.me/${l.phone.replace(/\D/g,'')}" target="_blank">💬 Open in WhatsApp</a>
-    `;
-    document.getElementById('modal-detail').classList.add('open');
-  }catch(e){toast('Failed to load lead details');}
-}
-
-async function updateStatus(id,status){
-  await fetch(`${API}/leads/${id}/status`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})});
+async function updateStatus() {
+  if (!currentLead) return;
+  const status = document.getElementById('chat-status').value;
+  await fetch(`${API}/leads/${currentLead.id}/status`, {
+    method: 'PATCH',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({status})
+  });
+  currentLead.status = status;
+  const lead = allLeads.find(l => l.phone === currentLead.phone);
+  if (lead) lead.status = status;
+  renderStats();
+  renderContacts();
   toast('Status updated');
-  loadLeads();
 }
 
-async function addNote(id){
-  const inp=document.getElementById(`note-inp-${id}`);
-  const text=inp.value.trim();
-  if(!text) return;
-  await fetch(`${API}/leads/${id}/notes`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
-  inp.value='';
-  const r=await fetch(`${API}/leads/${id}`);
-  const l=await r.json();
-  document.getElementById(`notes-${id}`).innerHTML=l.notes.map(n=>`
-    <div class="note-item">
-      <div class="note-meta">${fmtTime(n.created_at)}</div>
-      <div class="note-text">${n.text}</div>
-    </div>`).join('');
-  toast('Note added');
+function openKwikEngage() {
+  window.open('https://app.kwikengage.ai/chat-panel', '_blank');
 }
 
-function openAddModal(){document.getElementById('modal-add').classList.add('open');}
-function closeModal(id){document.getElementById(id).classList.remove('open');}
+function openAddModal() { document.getElementById('modal-add').style.display = 'flex'; }
+function closeAddModal() { document.getElementById('modal-add').style.display = 'none'; }
 
-async function saveLead(){
-  const phone=document.getElementById('add-phone').value.trim();
-  if(!phone){toast('Phone number is required');return;}
-  const body={
-    name:document.getElementById('add-name').value.trim(),
+async function saveLead() {
+  const phone = document.getElementById('add-phone').value.trim();
+  if (!phone) { toast('Phone is required'); return; }
+  const body = {
+    name: document.getElementById('add-name').value.trim(),
     phone,
-    query:document.getElementById('add-query').value.trim(),
-    source:document.getElementById('add-source').value,
-    status:document.getElementById('add-status').value
+    query: document.getElementById('add-query').value.trim(),
+    source: document.getElementById('add-source').value,
+    status: document.getElementById('add-status').value
   };
-  await fetch(`${API}/leads`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-  closeModal('modal-add');
-  ['add-name','add-phone','add-query'].forEach(i=>document.getElementById(i).value='');
+  await fetch(`${API}/leads`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  closeAddModal();
+  ['add-name','add-phone','add-query'].forEach(i => document.getElementById(i).value = '');
   toast('Lead added!');
-  loadLeads();
+  await loadLeads();
 }
 
-function exportCSV(){
-  if(!allLeads.length){toast('No leads to export');return;}
-  const rows=[['ID','Name','Phone','Query','Source','Status','Received'],...allLeads.map(l=>[l.id,l.name,l.phone,l.query,l.source,l.status,fmtTime(l.received_at)])];
-  const csv=rows.map(r=>r.map(c=>'"'+(String(c||'')).replace(/"/g,'""')+'"').join(',')).join('\n');
-  const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download='jagat_leads_'+new Date().toISOString().slice(0,10)+'.csv';
+function exportCSV() {
+  if (!allLeads.length) { toast('No leads to export'); return; }
+  const rows = [['Name','Phone','Last Message','Source','Status','Last Active'],
+    ...allLeads.map(l => [l.name, l.phone, l.query, l.source, l.status, fmtTime(l.received_at)])];
+  const csv = rows.map(r => r.map(c => '"' + String(c||'').replace(/"/g,'""') + '"').join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'jagat_leads_' + new Date().toISOString().slice(0,10) + '.csv';
   a.click();
   toast('CSV exported!');
 }
 
-document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
-
-// Auto-refresh every 30 seconds
 loadLeads();
 setInterval(loadLeads, 30000);
 </script>
