@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     const result = await pool.query(
       `SELECT * FROM leads ${where} ORDER BY received_at DESC`, values
     );
-    res.json(result.rows);
+    res.set('Cache-Control', 'no-store').json(result.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
