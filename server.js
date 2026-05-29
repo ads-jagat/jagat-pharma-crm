@@ -1,4 +1,4 @@
- const express = require('express');
+const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -7,7 +7,11 @@ const webhookRoutes = require('./routes/webhooks');
 const leadsRoutes = require('./routes/leads');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(bodyParser.json());
 app.use(require('express').static('public'));
 
